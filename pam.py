@@ -15,6 +15,7 @@ __all__ = ['PamException', 'Error', 'authenticate', 'open_session', 'close_sessi
 from ctypes import CDLL, POINTER, Structure, CFUNCTYPE, cast, pointer, sizeof
 from ctypes import c_void_p, c_uint, c_char_p, c_char, c_int
 from ctypes.util import find_library
+import os
 import sys
 
 LIBPAM = CDLL(find_library("pam"))
@@ -153,6 +154,8 @@ PAM_CHAUTHTOK.argtypes = [PamHandle, c_int]
 def default_conv(n_messages, messages, p_response, app_data):
     addr = CALLOC(n_messages, sizeof(PamResponse))
     p_response[0] = cast(addr, POINTER(PamResponse))
+    if not os.isatty(sys.stdin.fileno()):
+        return 0
     for i in range(n_messages):
         msg = messages[i].contents
         style = msg.msg_style
