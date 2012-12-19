@@ -15,6 +15,7 @@ __all__ = ['PamException', 'Error', 'authenticate', 'open_session', 'close_sessi
 from ctypes import CDLL, POINTER, Structure, CFUNCTYPE, cast, pointer, sizeof
 from ctypes import c_void_p, c_uint, c_char_p, c_char, c_int
 from ctypes.util import find_library
+import getpass
 import os
 import sys
 
@@ -245,7 +246,6 @@ def change_password(username, service='login'):
     return pam_end(handle, PAM_CHAUTHTOK(handle, 0))
 
 if __name__ == "__main__":
-    import getpass
     import optparse
 
     usage = "usage: %prog [options] [username]"
