@@ -1,9 +1,9 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '0.1.4'
+version = '1.0'
 
-setup(name='pam',
+setup(name='pam2',
       version=version,
       description="PAM interface using ctypes",
       long_description="""\
@@ -18,10 +18,10 @@ An interface to the Pluggable Authentication Modules (PAM) library on linux, wri
           "Topic :: System :: Systems Administration :: Authentication/Directory"
           ],
       keywords='',
-      author='Chris AtLee',
-      author_email='chris@atlee.ca',
-      url='http://atlee.ca/software/pam',
-      download_url = "http://atlee.ca/software/pam/dist/%s" % version,
+      author='Grzegorz Nosek',
+      author_email='root@localdomain.pl',
+      url='http://github.com/gnosek/python-pam',
+      download_url = "http://github.com/gnosek/python-pam/archive/%s.zip" % version,
       license='MIT',
       py_modules=["pam"],
       zip_safe=True,
